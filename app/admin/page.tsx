@@ -9,7 +9,7 @@ export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [activeTab, setActiveTab] = useState<"appointments" | "messages" | "orders" | "products" | "reviews">("appointments");
+  const [activeTab, setActiveTab] = useState<"appointments" | "messages" | "orders" | "products" | "reviews" | "gallery">("appointments");
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
                     ? "border-b-2 border-ayurveda-green text-ayurveda-green"
                     : "text-gray-600 hover:text-ayurveda-green"
                 } transition-colors`}
-                onClick={() => setActiveTab("gallery" as any)}
+                onClick={() => setActiveTab("gallery")}
               >
                 Gallery
               </Link>
