@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: "Experience authentic Ayurvedic treatments, natural products, and holistic wellness consultations. Book your appointment today.",
   keywords: "ayurveda, wellness, natural healing, ayurvedic treatments, consultation",
   icons: {
-    icon: '/favicon.png',
+    icon: '/favicon-32x32.png',
     apple: '/logo.svg',
   },
   openGraph: {
