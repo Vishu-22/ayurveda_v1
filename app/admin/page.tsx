@@ -301,7 +301,7 @@ export default function AdminDashboard() {
                                 </div>
                               ) : (
                                 <p className="text-gray-600 mb-2">
-                                  {order.productName || order.product_id || `Product ${order.productId || order.product_id || 'N/A'}`}
+                                  {order.product_id || `Product ${order.productId || order.product_id || 'N/A'}`}
                                 </p>
                               )}
                               {order.customer_name && (

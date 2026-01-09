@@ -99,6 +99,8 @@ export interface Order {
   shipping_address?: string;
   status?: "pending" | "processing" | "shipped" | "delivered" | "cancelled" | "failed" | "completed";
   items?: OrderItem[]; // For multi-item orders
+  product_id?: string; // For legacy single-item orders
+  productId?: string; // For backward compatibility with legacy orders
   created_at?: Date | string;
   createdAt?: Date | string; // For backward compatibility
   updated_at?: Date | string;

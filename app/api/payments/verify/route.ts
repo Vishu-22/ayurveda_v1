@@ -62,7 +62,9 @@ export async function POST(request: NextRequest) {
       const supabase = createServerClient();
 
       // Handle multi-item orders (from cart) or single item orders (buy now)
-      const orderItems = items || (productId ? [{ productId, quantity: quantity || 1, price: payment.amount / (quantity || 1) }] : []);
+      const paymentAmount = typeof payment.amount === 'number' ? payment.amount : Number(payment.amount) || 0;
+      const itemQuantity = typeof quantity === 'number' ? quantity : Number(quantity) || 1;
+      const orderItems = items || (productId ? [{ productId, quantity: itemQuantity, price: paymentAmount / itemQuantity }] : []);
 
       // #region agent log
       fetch('http://127.0.0.1:7242/ingest/5e8bf3cb-007b-4391-a1cc-13e16d0edec7',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/payments/verify/route.ts:58',message:'Preparing to save order to database',data:{orderItemsCount:orderItems.length,paymentAmount:payment.amount},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'F'})}).catch(()=>{});
@@ -98,11 +100,12 @@ export async function POST(request: NextRequest) {
 
       // Create order items
       if (orderItems.length > 0) {
+        const paymentAmount = typeof payment.amount === 'number' ? payment.amount : Number(payment.amount) || 0;
         const orderItemsData = orderItems.map((item: any) => ({
           order_id: order.id,
           product_id: item.productId,
           quantity: item.quantity || 1,
-          price_at_purchase: Math.round((item.price || payment.amount / orderItems.length) * 100), // Convert to paise
+          price_at_purchase: Math.round((item.price || (orderItems.length > 0 ? paymentAmount / orderItems.length : 0)) * 100), // Convert to paise
         }));
 
         const { error: itemsError } = await supabase
