@@ -8,14 +8,14 @@ export default function CTA() {
           Ready to Begin Your Wellness Journey?
         </h2>
         <p className="text-xl mb-8 text-green-50 max-w-2xl mx-auto">
-          Book a consultation today and discover how Ayurveda can transform your health and well-being.
+          Discover authentic Ayurvedic products and natural wellness solutions for a balanced, healthy life.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/appointment"
+            href="/products"
             className="bg-ayurveda-gold text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-ayurveda-gold/90 transition-colors"
           >
-            Book Appointment
+            Shop Products
           </Link>
           <Link
             href="/contact"

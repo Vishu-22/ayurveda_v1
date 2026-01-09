@@ -53,10 +53,10 @@ export default function Services() {
 
         <div className="text-center">
           <Link
-            href="/services"
+            href="/contact"
             className="inline-block bg-ayurveda-green text-white px-8 py-3 rounded-md hover:bg-ayurveda-green/90 transition-colors font-semibold"
           >
-            View All Services
+            Contact Us for Services
           </Link>
         </div>
       </div>
