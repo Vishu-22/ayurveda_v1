@@ -3,10 +3,20 @@ import { createServerClient } from "@/lib/supabase";
 import crypto from "crypto";
 import Razorpay from "razorpay";
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || "",
-  key_secret: process.env.RAZORPAY_KEY_SECRET || "",
-});
+// Lazy initialization function to avoid build-time errors
+function getRazorpayInstance() {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
+  
+  if (!keyId || !keySecret) {
+    throw new Error("Razorpay credentials are not configured");
+  }
+  
+  return new Razorpay({
+    key_id: keyId,
+    key_secret: keySecret,
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -52,6 +62,7 @@ export async function POST(request: NextRequest) {
     // #region agent log
     fetch('http://127.0.0.1:7242/ingest/5e8bf3cb-007b-4391-a1cc-13e16d0edec7',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/payments/verify/route.ts:52',message:'Fetching payment details from Razorpay',data:{paymentId},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'F'})}).catch(()=>{});
     // #endregion
+    const razorpay = getRazorpayInstance();
     const payment = await razorpay.payments.fetch(paymentId);
 
     // #region agent log
