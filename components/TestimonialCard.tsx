@@ -13,7 +13,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         ))}
       </div>
       <p className="text-gray-700 mb-4 italic leading-relaxed">
-        "{testimonial.text}"
+        &quot;{testimonial.text}&quot;
       </p>
       <div className="border-t pt-4">
         <p className="font-semibold text-ayurveda-green">{testimonial.name}</p>

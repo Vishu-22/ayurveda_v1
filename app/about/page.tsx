@@ -24,14 +24,14 @@ export default function AboutPage() {
               </p>
               <p className="text-gray-700 leading-relaxed">
                 We believe that true wellness comes from understanding the unique constitution of 
-                each individual and providing treatments that align with nature's rhythms.
+                each individual and providing treatments that align with nature&apos;s rhythms.
               </p>
             </section>
 
             <section className="mb-12">
               <h2 className="text-3xl font-serif text-ayurveda-green mb-4">What is Ayurveda?</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Ayurveda, the "science of life," is a 5,000-year-old healing system from India. 
+                Ayurveda, the &quot;science of life,&quot; is a 5,000-year-old healing system from India. 
                 It emphasizes the balance between mind, body, and spirit through natural remedies, 
                 dietary practices, and lifestyle modifications.
               </p>

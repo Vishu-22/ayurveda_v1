@@ -15,7 +15,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We'd love to hear from you. Reach out for appointments, questions, or consultations.
+            We&apos;d love to hear from you. Reach out for appointments, questions, or consultations.
           </p>
         </div>
 
